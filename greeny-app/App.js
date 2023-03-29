@@ -1,25 +1,20 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Header from './components/Header';
-import BankCard from './components/BankCard';
-import Formulario from './components/Formulario';
-import BarChartComponent from './components/BarChart';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RegisterSalaryScreen from './components/Salary/Home';
+import HomeScreen from './components/Home/HomeScreen';
 
-const App = () => {
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Header />
-      <BankCard />
-      <BarChartComponent />
-      <Formulario />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="RegisterSalary" component={RegisterSalaryScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+}
 
 export default App;
