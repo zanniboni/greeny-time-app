@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 
-const BtnRegisterSalaryPage = ({ navigation }) => {
+const BtnNavigation = ({ navigation, route, title }) => {
   return (
     <View style={styles.container}>
       <Button
-        title="Registrar salário"
-        onPress={() => navigation.navigate('RegisterSalary')}
+        title={title}
+        onPress={() => navigation.navigate(route)}
       />
     </View>
   );
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default BtnRegisterSalaryPage;
+export default BtnNavigation;
