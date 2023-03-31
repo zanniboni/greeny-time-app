@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { View, TextInput, StyleSheet, Text, TouchableOpacity } from "react-native";
-import CheckBox from "expo-checkbox";
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet, Text,} from 'react-native';
+import CheckBox from 'expo-checkbox';
+import SaveWorkHourBtn from './SaveWorkHourBtn';
 
 const AddWorkHoursForm = () => {
   const [hours, setHours] = useState("");
   const [isChecked, setChecked] = useState(false);
   const [data, setData] = useState([
-    { id: 1, title: "Diário", isChecked: false },
-    { id: 2, title: "Semanal", isChecked: false },
-    { id: 3, title: "Mensal", isChecked: false },
+    { id: 1, title: 'Diário', isChecked: false },
+    { id: 2, title: 'Semanal', isChecked: false },
+    { id: 3, title: 'Mensal', isChecked: false },
   ]);
 
   const handleChecked = (itemId) => {
@@ -28,7 +29,7 @@ const AddWorkHoursForm = () => {
         <Text style={styles.infoText}>Horas trabalhadas</Text>
         <TextInput
           style={styles.input}
-          placeholder="Horas trabalhadas"
+          placeholder='Horas trabalhadas'
           value={hours}
           onChangeText={setHours}
         />
@@ -37,7 +38,7 @@ const AddWorkHoursForm = () => {
        <View style={styles.dataContainer}>
       {data.map((item) => (
         <View key={item.id} style={styles.checkBoxItem}>
-          <CheckBox style={styles.cbteste}
+          <CheckBox style={styles.checkBoxInput}
             value={item.isChecked}
             onValueChange={() => handleChecked(item.id)}
           />
@@ -45,9 +46,7 @@ const AddWorkHoursForm = () => {
         </View>
       ))}
       </View>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.btnText}>Enviar</Text>
-        </TouchableOpacity>
+        <SaveWorkHourBtn/>
     </View>
   );
 };
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
     marginTop: 20,
     paddingLeft: 10,
@@ -83,23 +82,9 @@ const styles = StyleSheet.create({
     gap: 45,
     paddingTop: 20
   },
-  cbteste: {
+  checkBoxInput: {
     marginRight: 10
   },
-  button: {
-    backgroundColor: '#00b894',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    width: '50%',
-    marginTop: 20
-  },
-  btnText:{
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-    letterSpacing: 1
-  }
 
 })
 export default AddWorkHoursForm;
