@@ -9,7 +9,6 @@ function HomeScreen({ navigation }) {
         <Header title={"GreenyTime"} />
         <BtnNavigation title={'Registrar Salário'} route={'RegisterSalary'} navigation={navigation}/>
         <BtnNavigation title={'Registrar horas'} route={'WorkHours'} navigation={navigation}/>
-        
       </View>
     );
 }
