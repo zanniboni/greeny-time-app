@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
+import SaveSalaryButton from './SaveSalaryButton';
 
 const AddSalaryForm = () => {
   const [salario, setSalario] = useState('');
@@ -12,6 +13,7 @@ const AddSalaryForm = () => {
         value={salario}
         onChangeText={setSalario}
       />
+      <SaveSalaryButton />
     </View>
   );
 };

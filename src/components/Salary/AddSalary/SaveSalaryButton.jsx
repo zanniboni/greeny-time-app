@@ -1,7 +1,7 @@
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
-const SaveWorkHourBtn = () => {
+const SaveSalaryButton = () => {
   return (
     <TouchableOpacity style={styles.button}>
       <Text style={styles.btnText}>Enviar</Text>
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SaveWorkHourBtn;
+export default SaveSalaryButton;
