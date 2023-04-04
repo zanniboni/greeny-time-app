@@ -6,7 +6,7 @@ import AddSalaryForm from './AddSalary/AddSalaryForm';
 const RegisterSalaryScreen = () => {
   return (
     <View>
-      <Header title={"Adicionar salário bruto"} />
+      <Header title={'Adicionar salário bruto'} />
       <AddSalaryForm />
     </View>
   );
