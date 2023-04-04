@@ -6,7 +6,7 @@ import AddWorkHoursForm from './AddWorkHours/AddWorkHoursForm';
 const WorkHoursScreen = () => {
   return (
     <View>
-      <Header title={"Registrar as horas trabalhadas"} />
+      <Header title={'Registrar as horas trabalhadas'} />
       <AddWorkHoursForm/>
 
     </View>

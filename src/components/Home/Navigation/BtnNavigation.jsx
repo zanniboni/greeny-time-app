@@ -3,7 +3,7 @@ import { Button, StyleSheet, View } from 'react-native';
 
 const BtnNavigation = ({ navigation, route, title }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.box}>
       <Button
         title={title}
         onPress={() => navigation.navigate(route)}
@@ -14,11 +14,11 @@ const BtnNavigation = ({ navigation, route, title }) => {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop: 6,
+  box: {
+    width: 150,
+    borderColor: '#ddd',
+    padding: 10,
+    marginTop: 5
   }
 });
 

@@ -4,7 +4,7 @@ import CheckBox from 'expo-checkbox';
 import SaveWorkHourBtn from './SaveWorkHourBtn';
 
 const AddWorkHoursForm = () => {
-  const [hours, setHours] = useState("");
+  const [hours, setHours] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [data, setData] = useState([
     { id: 1, title: 'Diário', isChecked: false },
