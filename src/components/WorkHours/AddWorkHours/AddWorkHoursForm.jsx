@@ -14,16 +14,17 @@ const AddWorkHoursForm = () => {
   };
 
   const isValidPositiveNumber = (value) => {
+    const regex = /^[0-9,.]+$/ // regex para letras, vírgulas e pontos
     if (!value) {
-      return ""; // retorna string vazia se apagar todo o valor
-    } else if (!validator.isFloat(value)) {
+      return ''; // retorna string vazia se apagar todo o valor
+    } else if (!regex.test(value)) {
       ToastAndroid.show(
-        "Por favor, digite um número positivo",
+        'Por favor, digite apenas letras, vírgulas e pontos',
         ToastAndroid.SHORT
       );
-      return "Por favor, digite um número positivo";
+      return 'Por favor, digite apenas letras, vírgulas e pontos';
     }
-    return parseInt(value, 10) > 0 ? "" : "Por favor, digite um número positivo";
+    return '';
   };
 
   return (
@@ -32,10 +33,10 @@ const AddWorkHoursForm = () => {
         <Text style={styles.infoText}>Horas trabalhadas</Text>
         <TextInput
           style={styles.input}
-          placeholder="Digite o número de horas"
+          placeholder='Digite o número de horas'
           value={inputValue}
           onChangeText={handleInputChange}
-          keyboardType="numeric"
+          keyboardType='numeric'
         />
         {errorMessage ? (
           <Text style={styles.errorText}>{errorMessage}</Text>
@@ -50,29 +51,29 @@ const AddWorkHoursForm = () => {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
     marginTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
   },
   container: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   inputContainer: {
-    width: "80%",
+    width: '80%',
   },
   infoText: {
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 10,
     fontSize: 24,
   },
   errorText: {
-    color: "red",
+    color: 'red',
   },
   toastContainer: {
-    backgroundColor: "red",
+    backgroundColor: 'red',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 20,
