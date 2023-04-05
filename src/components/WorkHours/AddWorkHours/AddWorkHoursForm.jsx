@@ -1,26 +1,15 @@
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text,} from 'react-native';
-import CheckBox from 'expo-checkbox';
-import SaveWorkHourBtn from './SaveWorkHourBtn';
+import React, { useState } from "react";
+import { View, TextInput, StyleSheet, Text} from "react-native";
+import SaveWorkHourBtn from "./SaveWorkHourBtn";
+import { isValidPositiveNumber } from "../../Validators/IsValidPositiveNumbers";
 
 const AddWorkHoursForm = () => {
-  const [hours, setHours] = useState('');
-  const [isChecked, setChecked] = useState(false);
-  const [data, setData] = useState([
-    { id: 1, title: 'Diário', isChecked: false },
-    { id: 2, title: 'Semanal', isChecked: false },
-    { id: 3, title: 'Mensal', isChecked: false },
-  ]);
+  const [inputValue, setInputValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleChecked = (itemId) => {
-    const newData = data.map((item) => {
-      if (item.id === itemId) {
-        return { ...item, isChecked: true };
-      } else {
-        return { ...item, isChecked: false };
-      }
-    });
-    setData(newData);
+  const handleInputChange = (text) => {
+    setInputValue(text);
+    setErrorMessage(isValidPositiveNumber(text));
   };
 
   return (
@@ -29,33 +18,21 @@ const AddWorkHoursForm = () => {
         <Text style={styles.infoText}>Horas trabalhadas</Text>
         <TextInput
           style={styles.input}
-          placeholder='Horas trabalhadas'
-          value={hours}
-          onChangeText={setHours}
+          placeholder='Digite o número de horas'
+          value={inputValue}
+          onChangeText={handleInputChange}
+          keyboardType='numeric'
         />
+        {errorMessage ? (
+          <Text style={styles.errorText}>{errorMessage}</Text>
+        ) : null}
       </View>
-      <Text style={styles.infoText}>Período</Text>
-       <View style={styles.dataContainer}>
-      {data.map((item) => (
-        <View key={item.id} style={styles.checkBoxItem}>
-          <CheckBox style={styles.checkBoxInput}
-            value={item.isChecked}
-            onValueChange={() => handleChecked(item.id)}
-          />
-          <Text>{item.title}</Text>
-        </View>
-      ))}
-      </View>
-        <SaveWorkHourBtn/>
+      <SaveWorkHourBtn />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  checkBoxItem: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
   input: {
     height: 40,
     borderColor: 'gray',
@@ -63,13 +40,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
-
   },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputContainer:{ 
+  inputContainer: {
     width: '80%',
   },
   infoText: {
@@ -77,14 +53,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 24,
   },
-  dataContainer: {
-    flexDirection: 'row',
-    gap: 45,
-    paddingTop: 20
+  errorText: {
+    color: 'red',
   },
-  checkBoxInput: {
-    marginRight: 10
+  toastContainer: {
+    backgroundColor: 'red',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    marginHorizontal: 20,
+    marginVertical: 50,
   },
+});
 
-})
 export default AddWorkHoursForm;
