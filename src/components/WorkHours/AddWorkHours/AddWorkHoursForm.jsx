@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { View, TextInput, StyleSheet, Text, ToastAndroid } from "react-native";
+import { View, TextInput, StyleSheet, Text} from "react-native";
 import SaveWorkHourBtn from "./SaveWorkHourBtn";
-import validator from "validator";
-import { DateReadOnlyInput } from "./DateReadOnlyInput";
+import { isValidPositiveNumber } from "../../Validators/IsValidPositiveNumbers";
 
 const AddWorkHoursForm = () => {
   const [inputValue, setInputValue] = useState("");
@@ -13,35 +12,20 @@ const AddWorkHoursForm = () => {
     setErrorMessage(isValidPositiveNumber(text));
   };
 
-  const isValidPositiveNumber = (value) => {
-    const regex = /^[0-9,.]+$/; // regex para números, vírgulas e pontos
-    if (!value) {
-      return ''; // retorna string vazia se apagar todo o valor
-    } else if (!regex.test(value)) {
-      ToastAndroid.show(
-        'Por favor, digite apenas números, vírgulas e pontos',
-        ToastAndroid.SHORT
-      );
-      return 'Por favor, digite apenas números, vírgulas e pontos';
-    }
-    return '';
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.infoText}>Horas trabalhadas</Text>
         <TextInput
           style={styles.input}
-          placeholder="Digite o número de horas"
+          placeholder='Digite o número de horas'
           value={inputValue}
           onChangeText={handleInputChange}
-          keyboardType="numeric"
+          keyboardType='numeric'
         />
         {errorMessage ? (
           <Text style={styles.errorText}>{errorMessage}</Text>
         ) : null}
-        <DateReadOnlyInput />
       </View>
       <SaveWorkHourBtn />
     </View>
@@ -51,29 +35,29 @@ const AddWorkHoursForm = () => {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
     marginTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
   },
   container: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   inputContainer: {
-    width: "80%",
+    width: '80%',
   },
   infoText: {
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 10,
     fontSize: 24,
   },
   errorText: {
-    color: "red",
+    color: 'red',
   },
   toastContainer: {
-    backgroundColor: "red",
+    backgroundColor: 'red',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 20,
