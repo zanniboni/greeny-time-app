@@ -1,13 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 import Header from '../Layout/Header';
-import AddSalaryForm from './AddSalary/AddSalaryForm';
+import Formulary from '../Form/Formulary';
+import { Calendar } from "../Calendar/Calendar";
 
 const RegisterSalaryScreen = () => {
   return (
     <View>
       <Header title={'Adicionar salário bruto'} />
-      <AddSalaryForm />
+      <Formulary title={'Salário bruto'} placeholder={'10.000'} />
+      <Calendar/>
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import {ToastAndroid} from "react-native";
 
-export const isValidPositiveNumber = (value) => {
+const isValidPositiveNumber = (value) => {
     const regex = /^[0-9,.]+$/; // regex para números, vírgulas e pontos
     if (!value) {
       return ''; // retorna string vazia se apagar todo o valor
@@ -13,3 +13,5 @@ export const isValidPositiveNumber = (value) => {
     }
     return '';
   };
+
+export default isValidPositiveNumber;

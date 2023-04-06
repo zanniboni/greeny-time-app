@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet, Text} from "react-native";
-import SaveWorkHourBtn from "./SaveWorkHourBtn";
-import { isValidPositiveNumber } from "../../Validators/IsValidPositiveNumbers";
+import SaveWorkHourBtn from "../WorkHours/AddWorkHours/SaveWorkHourBtn";
+import isValidPositiveNumber from "../Validators/IsValidPositiveNumbers";
 
-const AddWorkHoursForm = () => {
+const Formulary = ({title, placeholder}) => {
   const [inputValue, setInputValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -15,10 +15,10 @@ const AddWorkHoursForm = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <Text style={styles.infoText}>Horas trabalhadas</Text>
+        <Text style={styles.infoText}>{title}</Text>
         <TextInput
           style={styles.input}
-          placeholder='Digite o número de horas'
+          placeholder={placeholder}
           value={inputValue}
           onChangeText={handleInputChange}
           keyboardType='numeric'
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddWorkHoursForm;
+export default Formulary;
