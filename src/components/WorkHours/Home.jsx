@@ -5,8 +5,6 @@ import Header from "../Layout/Header";
 import Formulary from "../Form/Formulary";
 
 const WorkHoursScreen = () => {
-
-
   return (
     <View style={styles.container}>
       <View>

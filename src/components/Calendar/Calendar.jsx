@@ -5,7 +5,7 @@ import DatePicker from "react-native-modern-datepicker";
 
 export const Calendar = () => {
   
-  const [open, setOpen] = useState(false); //abre e fecha o modal
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState('');
 
   function handleOnPress() {

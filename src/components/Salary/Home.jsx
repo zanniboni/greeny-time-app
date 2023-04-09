@@ -8,7 +8,7 @@ const RegisterSalaryScreen = () => {
   return (
     <View>
       <Header title={'Adicionar salário bruto'} />
-      <Formulary title={'Salário bruto'} placeholder={'10.000'} />
+      <Formulary title={'Salário bruto'} placeholder={'R$ 10.000,00'} />
       <Calendar/>
     </View>
   );

@@ -1,25 +1,25 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 
-const BtnNavigation = ({ navigation, route, title }) => {
+const BtnNavigation = ({ navigation, route, title, style}) => {
   return (
-    <View style={styles.box}>
-      <Button
-        title={title}
-        onPress={() => navigation.navigate(route)}
-      />
-    </View>
+    <TouchableOpacity style={styles.box} onPress={() => navigation.navigate(route)}> 
+        <Text style={style}>
+          {title}
+        </Text>
+      </TouchableOpacity>
   );
 };
 
 
 const styles = StyleSheet.create({
   box: {
-    width: 150,
+    width: '100%',
     borderColor: '#ddd',
     padding: 10,
-    marginTop: 5
-  }
+    marginTop: 5,
+    textAlign: 'center',
+  },
 });
 
 

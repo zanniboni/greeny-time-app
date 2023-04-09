@@ -1,9 +1,9 @@
 import {ToastAndroid} from "react-native";
 
 const isValidPositiveNumber = (value) => {
-    const regex = /^[0-9,.]+$/; // regex para números, vírgulas e pontos
+    const regex = /^[0-9,.]+$/;
     if (!value) {
-      return ''; // retorna string vazia se apagar todo o valor
+      return '';
     } else if (!regex.test(value)) {
       ToastAndroid.show(
         'Por favor, digite apenas números, vírgulas e pontos',
