@@ -29,7 +29,7 @@ const Register = ({ navigation }) => {
           <BtnNavigation
             style={styles.btnStyle}
             title={"Criar"}
-            route={"Home"}
+            route={"Início"}
             navigation={navigation}
           />
         </View>

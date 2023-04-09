@@ -11,7 +11,7 @@ const Login = ({ navigation }) => {
         <View>
           <View>
             <Text style={styles.title}>
-              {`Bem-vindo(a)! Por favor, faça login para continuar.`}
+              Bem-vindo(a)! Por favor, faça login para continuar.
             </Text>
           </View>
           <View>
@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
           <BtnNavigation
             style={styles.btnStyle}
             title={"Entrar"}
-            route={"Home"}
+            route={"Início"}
             navigation={navigation}
           />
         </View>

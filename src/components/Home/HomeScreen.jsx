@@ -8,8 +8,8 @@ function HomeScreen({ navigation }) {
     <View style={styles.mainView}>
       <Header title={"GreenyTime"} />
       <View style={styles.container}>
-        <BtnNavigation style={styles.btnStyle} title={"Registrar Salário"} route={"RegisterSalary"} navigation={navigation} />
-        <BtnNavigation style={styles.btnStyle} title={"Registrar horas"} route={"WorkHours"} navigation={navigation} />
+        <BtnNavigation style={styles.btnStyle} title={"Registrar Salário"} route={"Registro de salário"} navigation={navigation} />
+        <BtnNavigation style={styles.btnStyle} title={"Registrar horas"} route={"Registro de horas trabalhadas"} navigation={navigation} />
       </View>
     </View>
   );

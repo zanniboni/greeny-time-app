@@ -15,13 +15,13 @@ const WelcomeScreen = ({ navigation }) => {
         <BtnNavigation
           style={styles.btnSignIn}
           title={"Entrar"}
-          route={"Login"}
+          route={"Entrar"}
           navigation={navigation}
         />
         <BtnNavigation
           style={styles.btnSignUp}
           title={"Cadastrar"}
-          route={"Register"}
+          route={"Registrar"}
           navigation={navigation}
         />
       </View>
