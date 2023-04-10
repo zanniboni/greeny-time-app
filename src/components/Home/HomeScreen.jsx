@@ -1,16 +1,30 @@
-import * as React from "react";
-import { View, StyleSheet } from "react-native";
-import Header from "../Layout/Header";
-import BtnNavigation from "./Navigation/BtnNavigation";
+import * as React from 'react';
+import { View, StyleSheet } from 'react-native';
+import Header from '../Layout/Header';
+import BtnNavigation from './Navigation/BtnNavigation';
 
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.mainView}>
-      <Header title={"GreenyTime"} />
+      <Header title={'GreenyTime'} />
       <View style={styles.container}>
-        <BtnNavigation style={styles.btnStyle} title={"Registrar Salário"} route={"Registro de salário"} navigation={navigation} />
-        <BtnNavigation style={styles.btnStyle} title={"Registrar horas"} route={"Registro de horas trabalhadas"} navigation={navigation} />
-        <BtnNavigation style={styles.btnStyle} title={"Registro de gastos"} route={"Registro de gastos"} navigation={navigation}
+        <BtnNavigation
+          style={styles.btnStyle}
+          title={'Registrar Salário'}
+          route={'Registro de salário'}
+          navigation={navigation}
+        />
+        <BtnNavigation
+          style={styles.btnStyle}
+          title={'Registrar horas'}
+          route={'Registro de horas trabalhadas'}
+          navigation={navigation}
+        />
+        <BtnNavigation
+          style={styles.btnStyle}
+          title={'Registro de gastos'}
+          route={'Registro de gastos'}
+          navigation={navigation}
         />
       </View>
     </View>
@@ -23,10 +37,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
     marginTop: 6,
-    backgroundColor: "#ddd",
+    backgroundColor: '#ddd',
     padding: 20,
     width: 200,
   },
@@ -39,7 +53,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 20,
-},
+  },
 });
 
 export default HomeScreen;

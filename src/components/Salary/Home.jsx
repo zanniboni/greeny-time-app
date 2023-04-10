@@ -8,14 +8,12 @@ import SubmitButton from '../SubmitButton/SubmitButton';
 const RegisterSalaryScreen = () => {
   return (
     <View style={styles.container}>
-      <Header/>
-      <Text>
-        Salário bruto
-      </Text>
-      <Formulary style={styles.formContainer}placeholder={'R$ 10.000,00'} />
-      <Calendar/>
+      <Header />
+      <Text>Salário bruto</Text>
+      <Formulary style={styles.formContainer} placeholder={'R$ 10.000,00'} />
+      <Calendar />
       <View style={styles.btn}>
-      <SubmitButton/>
+        <SubmitButton />
       </View>
     </View>
   );
@@ -27,11 +25,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   formContainer: {
-    width: '80%'
+    width: '80%',
   },
-  btn:{
-    width: '100%'
-  }
-})
+  btn: {
+    width: '100%',
+  },
+});
 
 export default RegisterSalaryScreen;

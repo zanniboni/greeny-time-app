@@ -1,7 +1,7 @@
-import React from "react";
-import { View, StyleSheet, Text, TextInput } from "react-native";
-import Header from "../Layout/Header";
-import BtnNavigation from "../Home/Navigation/BtnNavigation";
+import React from 'react';
+import { View, StyleSheet, Text, TextInput } from 'react-native';
+import Header from '../Layout/Header';
+import BtnNavigation from '../Home/Navigation/BtnNavigation';
 
 const Login = ({ navigation }) => {
   return (
@@ -15,7 +15,7 @@ const Login = ({ navigation }) => {
             </Text>
           </View>
           <View>
-            <TextInput style={styles.input} placeholder="E-mail"/>
+            <TextInput style={styles.input} placeholder="E-mail" />
             <TextInput
               style={styles.input}
               placeholder="Senha"
@@ -27,8 +27,8 @@ const Login = ({ navigation }) => {
         <View style={styles.btnContainer}>
           <BtnNavigation
             style={styles.btnStyle}
-            title={"Entrar"}
-            route={"Início"}
+            title={'Entrar'}
+            route={'Início'}
             navigation={navigation}
           />
         </View>
@@ -40,40 +40,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 20,
-    alignItems: "center",
-    overflow: "hidden",
+    alignItems: 'center',
+    overflow: 'hidden',
   },
   input: {
-    backgroundColor: "#ddd",
+    backgroundColor: '#ddd',
     fontSize: 20,
     borderRadius: 10,
     marginTop: 20,
     height: 50,
     paddingHorizontal: 20,
-    maxWidth: "95%",
+    maxWidth: '95%',
   },
   btnStyle: {
-    color: "white",
-    backgroundColor: "#00b894",
+    color: 'white',
+    backgroundColor: '#00b894',
     height: 50,
     borderRadius: 10,
-    textAlignVertical: "center",
-    textAlign: "center",
-    fontWeight: "bold",
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
     fontSize: 20,
   },
   btnContainer: {
-    width: "100%",
+    width: '100%',
   },
   title: {
     fontSize: 30,
-    fontWeight: "600",
+    fontWeight: '600',
     marginTop: 20,
   },
   pass: {
-    textAlign: "right",
+    textAlign: 'right',
     marginTop: 20,
-    fontWeight: "400",
+    fontWeight: '400',
     fontSize: 15,
   },
 });

@@ -1,10 +1,9 @@
-import { useState } from "react";
-import React from "react";
-import { Text, StyleSheet, TouchableOpacity, Modal, View } from "react-native";
-import DatePicker from "react-native-modern-datepicker";
+import { useState } from 'react';
+import React from 'react';
+import { Text, StyleSheet, TouchableOpacity, Modal, View } from 'react-native';
+import DatePicker from 'react-native-modern-datepicker';
 
 const Calendar = () => {
-  
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState('');
 
@@ -39,22 +38,22 @@ const Calendar = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   centeredView: {
-    justifyContent: "center",
-    alignContent: "center",
+    justifyContent: 'center',
+    alignContent: 'center',
     marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
-    width: "80%",
+    width: '80%',
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -63,10 +62,10 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  title:{
+  title: {
     margin: 20,
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });
 
 export default Calendar;
