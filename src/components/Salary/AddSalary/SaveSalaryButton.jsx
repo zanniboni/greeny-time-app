@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
     width: '50%',
     marginTop: 20,
   },
-  btnText:{
+  btnText: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
-    letterSpacing: 1
-  }
+    letterSpacing: 1,
+  },
 });
 
 export default SaveSalaryButton;

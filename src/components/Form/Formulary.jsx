@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { View, TextInput, StyleSheet, Text} from "react-native";
-import SaveWorkHourBtn from "../SubmitButton/SubmitButton";
-import isValidPositiveNumber from "../Validators/IsValidPositiveNumbers";
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
+import isValidPositiveNumber from '../../Validators/IsValidPositiveNumbers';
 
-const Formulary = ({placeholder, style}) => {
-  const [inputValue, setInputValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+const Formulary = ({ placeholder, style }) => {
+  const [inputValue, setInputValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleInputChange = (text) => {
+  const handleInputChange = text => {
     setInputValue(text);
     setErrorMessage(isValidPositiveNumber(text));
   };
@@ -20,7 +19,7 @@ const Formulary = ({placeholder, style}) => {
           placeholder={placeholder}
           value={inputValue}
           onChangeText={handleInputChange}
-          keyboardType='numeric'
+          keyboardType="numeric"
         />
         {errorMessage ? (
           <Text style={styles.errorText}>{errorMessage}</Text>
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 5,
-    
   },
   container: {
     justifyContent: 'center',

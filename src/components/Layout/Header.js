@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const Header = () => {
   return (
     <View style={styles.header}>
-      <MaterialIcons name='access-time' size={24} color='#fff' />
+      <MaterialIcons name="access-time" size={24} color="#fff" />
       <Text style={styles.headerText}>Greeny Time</Text>
     </View>
   );

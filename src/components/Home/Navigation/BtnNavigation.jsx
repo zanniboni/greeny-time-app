@@ -1,16 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 
-const BtnNavigation = ({ navigation, route, title, style}) => {
+const BtnNavigation = ({ navigation, route, title, style }) => {
   return (
-    <TouchableOpacity style={styles.box} onPress={() => navigation.navigate(route)}> 
-        <Text style={style}>
-          {title}
-        </Text>
-      </TouchableOpacity>
+    <TouchableOpacity
+      style={styles.box}
+      onPress={() => navigation.navigate(route)}
+    >
+      <Text style={style}>{title}</Text>
+    </TouchableOpacity>
   );
 };
-
 
 const styles = StyleSheet.create({
   box: {
@@ -21,6 +21,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
 
 export default BtnNavigation;
