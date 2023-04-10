@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet, Text} from "react-native";
-import SaveWorkHourBtn from "../WorkHours/AddWorkHours/SaveWorkHourBtn";
+import SaveWorkHourBtn from "../SubmitButton/SubmitButton";
 import isValidPositiveNumber from "../Validators/IsValidPositiveNumbers";
 
-const Formulary = ({title, placeholder}) => {
+const Formulary = ({placeholder, style}) => {
   const [inputValue, setInputValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -13,9 +13,8 @@ const Formulary = ({title, placeholder}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View style={styles.inputContainer}>
-        <Text style={styles.infoText}>{title}</Text>
         <TextInput
           style={styles.input}
           placeholder={placeholder}
@@ -27,7 +26,6 @@ const Formulary = ({title, placeholder}) => {
           <Text style={styles.errorText}>{errorMessage}</Text>
         ) : null}
       </View>
-      <SaveWorkHourBtn />
     </View>
   );
 };
@@ -37,16 +35,17 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
+    borderRadius: 5,
+    
   },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   inputContainer: {
-    width: '80%',
+    width: '100%',
   },
   infoText: {
     textAlign: 'center',

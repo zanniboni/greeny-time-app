@@ -3,7 +3,7 @@ import React from "react";
 import { Text, StyleSheet, TouchableOpacity, Modal, View } from "react-native";
 import DatePicker from "react-native-modern-datepicker";
 
-export const Calendar = () => {
+const Calendar = () => {
   
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState('');
@@ -68,3 +68,5 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
+
+export default Calendar;

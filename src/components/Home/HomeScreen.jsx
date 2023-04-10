@@ -10,6 +10,8 @@ function HomeScreen({ navigation }) {
       <View style={styles.container}>
         <BtnNavigation style={styles.btnStyle} title={"Registrar Salário"} route={"Registro de salário"} navigation={navigation} />
         <BtnNavigation style={styles.btnStyle} title={"Registrar horas"} route={"Registro de horas trabalhadas"} navigation={navigation} />
+        <BtnNavigation style={styles.btnStyle} title={"Registro de gastos"} route={"Registro de gastos"} navigation={navigation}
+        />
       </View>
     </View>
   );

@@ -7,6 +7,7 @@ import WorkHoursScreen from "./src/components/WorkHours/Home";
 import WelcomeScreen from "./src/components/WelcomeScreen/Home";
 import Login from "./src/components/Login/Login";
 import Register from "./src/components/Register/Register";
+import Expenses from "./src/components/Expenses/ExpensesRegister";
 
 const Stack = createNativeStackNavigator();
 const titleAlign = {headerTitleAlign: 'center'}
@@ -20,6 +21,7 @@ const App = () => {
         <Stack.Screen name="Início" component={HomeScreen} options={titleAlign}/>
         <Stack.Screen name="Registro de salário" component={RegisterSalaryScreen} options={titleAlign}/>
         <Stack.Screen name="Registro de horas trabalhadas" component={WorkHoursScreen} options={titleAlign} />
+        <Stack.Screen name="Registro de gastos" component={Expenses} options={titleAlign} />
       </Stack.Navigator>
     </NavigationContainer>
   );
