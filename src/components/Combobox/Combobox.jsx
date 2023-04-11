@@ -12,7 +12,7 @@ const ComboBox = () => {
         selectedValue={selectedItem}
         onValueChange={(itemValue, itemIndex) => setSelectedItem(itemValue)}
       >
-        <Picker.Item label="Comida" value="food" />
+        <Picker.Item label="item1" value="item1" />
         <Picker.Item label="item2" value="valor2" />
       </Picker>
     </View>

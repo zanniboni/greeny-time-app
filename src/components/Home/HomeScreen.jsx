@@ -22,8 +22,14 @@ function HomeScreen({ navigation }) {
         />
         <BtnNavigation
           style={styles.btnStyle}
-          title={'Registro de gastos'}
+          title={'Registrar gastos'}
           route={'Registro de gastos'}
+          navigation={navigation}
+        />
+        <BtnNavigation
+          style={styles.btnStyle}
+          title={'Registro receita'}
+          route={'Registro de receitas'}
           navigation={navigation}
         />
       </View>
