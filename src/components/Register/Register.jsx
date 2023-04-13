@@ -22,7 +22,12 @@ const Register = ({ navigation }) => {
               placeholder="Confirme sua senha"
               secureTextEntry
             />
-            <Text style={styles.pass}>Já tem uma conta?</Text>
+            <BtnNavigation
+              style={styles.alreadyIn}
+              title={'Já tem uma conta?'}
+              route={'Entrar'}
+              navigation={navigation}
+            />
           </View>
         </View>
         <View style={styles.btnContainer}>
@@ -81,6 +86,9 @@ const styles = StyleSheet.create({
   content: {
     textAlign: 'center',
     width: '100%',
+  },
+  alreadyIn: {
+    textAlign: 'right',
   },
 });
 

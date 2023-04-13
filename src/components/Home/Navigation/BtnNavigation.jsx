@@ -1,20 +1,20 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { TouchableHighlight, StyleSheet, Text } from 'react-native';
 
 const BtnNavigation = ({ navigation, route, title, style }) => {
   return (
-    <TouchableOpacity
+    <TouchableHighlight
+      underlayColor="transparent"
       style={styles.box}
       onPress={() => navigation.navigate(route)}
     >
       <Text style={style}>{title}</Text>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
   box: {
-    width: '100%',
     borderColor: '#ddd',
     padding: 10,
     marginTop: 5,

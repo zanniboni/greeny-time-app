@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
-import isValidPositiveNumber from '../../Validators/IsValidPositiveNumbers';
+import isValidPositiveNumber from '../Validators/IsValidPositiveNumbers';
 
 const Formulary = ({ placeholder, style }) => {
   const [inputValue, setInputValue] = useState('');
