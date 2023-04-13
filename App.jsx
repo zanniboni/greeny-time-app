@@ -8,6 +8,7 @@ import WelcomeScreen from './src/components/WelcomeScreen/Home';
 import Login from './src/components/Login/Login';
 import Register from './src/components/Register/Register';
 import Expenses from './src/components/Expenses/ExpensesRegister';
+import Incomes from './src/components/Incomes/Incomes';
 
 const Stack = createNativeStackNavigator();
 const titleAlign = { headerTitleAlign: 'center' };
@@ -44,6 +45,11 @@ const App = () => {
         <Stack.Screen
           name="Registro de gastos"
           component={Expenses}
+          options={titleAlign}
+        />
+        <Stack.Screen
+          name="Registro de receitas"
+          component={Incomes}
           options={titleAlign}
         />
       </Stack.Navigator>
