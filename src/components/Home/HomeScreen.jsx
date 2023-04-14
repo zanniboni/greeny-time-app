@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, Button } from 'react-native';
 import Header from '../Layout/Header';
 import BtnNavigation from './Navigation/BtnNavigation';
+import useFetch from '../../hooks/useFetch';
 
 function HomeScreen({ navigation }) {
   return (
