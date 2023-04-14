@@ -55,13 +55,14 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    width: '50%',
+    width: '100%',
   },
   btnSignIn: {
     color: 'white',
     backgroundColor: '#00b894',
+    width: 150,
     height: 50,
     borderRadius: 10,
     textAlignVertical: 'center',
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
   btnSignUp: {
     color: '#00b894',
     backgroundColor: 'transparent',
+    width: 150,
     height: 50,
     borderRadius: 10,
     textAlignVertical: 'center',

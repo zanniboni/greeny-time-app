@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, Modal, View } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Modal,
+  View,
+  TextInput,
+} from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
+import { AntDesign } from '@expo/vector-icons';
 
 const Calendar = () => {
   const [open, setOpen] = useState(false);
@@ -13,11 +21,25 @@ const Calendar = () => {
   function handleChange(propDate) {
     setDate(propDate);
   }
+  let brazilianDate = date.split('/').reverse().join('/');
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handleOnPress}>
-        <Text style={styles.title}>Selecione a data clicando aqui</Text>
-      </TouchableOpacity>
+      <View style={styles.dateContainer}>
+        <TouchableOpacity onPress={handleOnPress}>
+          <Text style={styles.dateLabel}>Data</Text>
+          <TextInput editable={false} style={styles.dateContent}>
+            {brazilianDate}
+          </TextInput>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setDate('')}>
+          <Text>
+            Apagar
+            <AntDesign name="delete" size={24} color="black" />
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <Modal animationType="slide" transparent={true} visible={open}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
@@ -65,6 +87,32 @@ const styles = StyleSheet.create({
   title: {
     margin: 20,
     fontSize: 20,
+  },
+  brazilianDate: {
+    fontWeight: 'bold',
+  },
+  dateContainer: {
+    flexDirection: 'row',
+    gap: 10,
+    justifyContent: 'flex-end',
+    width: '100%',
+    marginRight: 50,
+    alignItems: 'center',
+  },
+  dateContent: {
+    width: 100,
+    backgroundColor: '#ddd',
+    borderRadius: 5,
+    height: 40,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  dateLabel: {
+    textAlign: 'center',
+    margin: 5,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 
