@@ -4,10 +4,15 @@ import Header from '../Layout/Header';
 import BtnNavigation from './Navigation/BtnNavigation';
 import GraficoDeBarras from '../Chart/Chart';
 
-function HomeScreen({ navigation }) {
+const HomeScreen = ({ route, navigation }) => {
+  const { name } = route.params;
+
   return (
     <View style={styles.mainView}>
-      <Header title={'GreenyTime'} />
+      <Header title={'Greeny Time'} />
+      <View>
+        <Text>Bem vindo ao Greeny, {name}</Text>
+      </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.container}>
           <View>

@@ -9,6 +9,7 @@ import {
 import Header from '../Layout/Header';
 import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
+import { baseUrl } from '../../enviroments/enviroment';
 
 const Register = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
@@ -17,7 +18,7 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const handlePress = () => {
     fetchData({
-      url: 'http://10.0.2.2:3333/users',
+      url: `${baseUrl}/users`,
       method: 'POST',
       body: JSON.stringify({
         name,
@@ -26,6 +27,7 @@ const Register = ({ navigation }) => {
       }),
     });
   };
+
   return (
     <>
       <Header title="Greeny Time" />
@@ -81,6 +83,7 @@ const Register = ({ navigation }) => {
     </>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
