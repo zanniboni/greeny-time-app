@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
     <View style={styles.header}>
       <MaterialIcons name="access-time" size={24} color="#fff" />
-      <Text style={styles.headerText}>Greeny Time</Text>
+      <Text style={styles.headerText}>{title}</Text>
     </View>
   );
 };
