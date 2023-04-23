@@ -10,6 +10,7 @@ import Header from '../Layout/Header';
 import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
 import { baseUrl } from '../../enviroments/enviroment';
+import BtnNavigation from '../Home/Navigation/BtnNavigation';
 
 const Register = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
