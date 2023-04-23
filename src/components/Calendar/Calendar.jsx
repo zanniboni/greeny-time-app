@@ -11,16 +11,18 @@ import {
 import DatePicker from 'react-native-modern-datepicker';
 import { AntDesign } from '@expo/vector-icons';
 
-const Calendar = () => {
+const Calendar = ({ parentCallback }) => {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState('');
 
-  function handleOnPress() {
+  const handleOnPress = () => {
     setOpen(!open);
-  }
-  function handleChange(propDate) {
+  };
+  const handleChange = propDate => {
     setDate(propDate);
-  }
+    parentCallback(propDate);
+  };
+
   let brazilianDate = date.split('/').reverse().join('/');
 
   return (

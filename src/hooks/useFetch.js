@@ -14,6 +14,8 @@ const useFetch = () => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODIyODM3MzYsImV4cCI6MTY4MjM3MDEzNiwic3ViIjoiZDY2NGRkODUtMjcxOS00MmI3LWJhMTYtMzczM2EyNTQ4MWNhIn0.bF_HDvlq-YAFfcWAHdAalru5VA0_9wGhBqSHt3eHx24',
         },
         body,
       });
