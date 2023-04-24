@@ -6,7 +6,7 @@ import Calendar from '../Calendar/Calendar';
 import ComboBox from '../Combobox/Combobox';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
-const Incomes = () => {
+const IncomesScreen = () => {
   return (
     <>
       <Header />
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Incomes;
+export default IncomesScreen;

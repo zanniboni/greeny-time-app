@@ -50,10 +50,8 @@ const RegisterSalaryScreen = () => {
       </View>
       <Calendar parentCallback={getDateFromCalendar} />
       <View style={styles.btn}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.btnText} onPress={sendDataToBackend}>
-            Enviar
-          </Text>
+        <TouchableOpacity style={styles.button} onPress={sendDataToBackend}>
+          <Text style={styles.btnText}>Enviar</Text>
           {loading && <Text>Loading...</Text>}
           {error && <Text>Error: {error.message}</Text>}
           {data && []}

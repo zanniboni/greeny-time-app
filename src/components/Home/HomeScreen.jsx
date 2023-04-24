@@ -51,12 +51,21 @@ const HomeScreen = ({ route, navigation }) => {
               navigation={navigation}
             />
           </View>
+          <View>
+            <Text style={styles.btnTitle}>Categoria</Text>
+            <BtnNavigation
+              style={styles.btnStyle}
+              title={'Categoria'}
+              route={'Categoria'}
+              navigation={navigation}
+            />
+          </View>
         </View>
       </ScrollView>
       <GraficoDeBarras />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   mainView: {

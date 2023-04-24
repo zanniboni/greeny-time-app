@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { baseUrl } from '../../enviroments/enviroment';
 import BtnNavigation from '../Home/Navigation/BtnNavigation';
 
-const Register = ({ navigation }) => {
+const RegisterScreen = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default RegisterScreen;
