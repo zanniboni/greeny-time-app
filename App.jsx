@@ -8,8 +8,10 @@ import WorkHoursScreen from './src/components/WorkHours/Home';
 import WelcomeScreen from './src/components/WelcomeScreen/Home';
 import Login from './src/components/Login/Login';
 import ExpensesScreen from './src/components/Expenses/ExpensesRegister';
-import CategoryScreen from './src/components/Category/Category';
+import CategoryHome from './src/components/Category/CategoryHome';
 import IncomesScreen from './src/components/Incomes/Incomes';
+import CategoryEdit from './src/components/Category/CategoryEdit';
+import CategoryManager from './src/components/Category/CategoryManager';
 
 const Stack = createNativeStackNavigator();
 const titleAlign = { headerTitleAlign: 'center' };
@@ -55,7 +57,17 @@ const App = () => {
         />
         <Stack.Screen
           name="Categoria"
-          component={CategoryScreen}
+          component={CategoryHome}
+          options={titleAlign}
+        />
+        <Stack.Screen
+          name="Gerenciamento de Categorias"
+          component={CategoryManager}
+          options={titleAlign}
+        />
+        <Stack.Screen
+          name="Edição de Categorias"
+          component={CategoryEdit}
           options={titleAlign}
         />
       </Stack.Navigator>

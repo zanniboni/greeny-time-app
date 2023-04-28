@@ -11,7 +11,7 @@ import Header from '../Layout/Header';
 import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../enviroments/enviroment';
 
-const CategoryScreen = () => {
+const CategoryManager = () => {
   const [description, setDescription] = useState('');
   const [name, setName] = useState('');
   const { loading, error, data, fetchData } = useFetch();
@@ -22,7 +22,7 @@ const CategoryScreen = () => {
       method: 'POST',
       body: JSON.stringify({
         name: name,
-        description: description,
+        description: '',
       }),
     });
   };
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-export default CategoryScreen;
+export default CategoryManager;

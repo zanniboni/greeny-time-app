@@ -1,10 +1,10 @@
 import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 
-const SubmitButton = () => {
+const SubmitButton = ({ title = 'Enviar' }) => {
   return (
     <TouchableOpacity style={styles.button}>
-      <Text style={styles.btnText}>Enviar</Text>
+      <Text style={styles.btnText}>{title}</Text>
     </TouchableOpacity>
   );
 };
