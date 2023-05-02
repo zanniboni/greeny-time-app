@@ -8,16 +8,33 @@ import {
   ScrollView,
 } from 'react-native';
 import Header from '../Layout/Header';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { baseUrl } from '../../enviroments/enviroment';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('teste@teste.com');
+  const [password, setPassword] = useState('1234');
+
+  const successLogin = token => {
+    const saveToken = async () => {
+      try {
+        await AsyncStorage.setItem('token', token);
+        await AsyncStorage.setItem('name', data.user.name);
+        await AsyncStorage.setItem('email', data.user.email);
+
+        navigation.navigate('Início');
+      } catch (e) {
+        console.log('Error while saving token in AsyncStorage');
+      }
+    };
+
+    saveToken();
+  };
+
   const handlePress = () => {
     fetchData({
       url: `${baseUrl}/session`,
@@ -27,16 +44,6 @@ const Login = ({ navigation }) => {
         password,
       }),
     });
-  };
-
-  const saveToken = async () => {
-    try {
-      await AsyncStorage.setItem('token', data.token);
-      return true;
-    } catch (e) {
-      console.log('Error while saving token in AsyncStorage');
-      return false;
-    }
   };
 
   return (
@@ -77,12 +84,7 @@ const Login = ({ navigation }) => {
             </TouchableOpacity>
             {loading && <Text>Loading...</Text>}
             {error && <Text>Error: {error.message}</Text>}
-            {data &&
-              saveToken() &&
-              navigation.navigate('Início', {
-                name: data.user.name,
-                email: data.user.email,
-              })}
+            {data && successLogin(data.token)}
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
