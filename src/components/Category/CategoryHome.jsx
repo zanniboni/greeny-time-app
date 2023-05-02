@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Icon } from 'react-native-elements';
 import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../enviroments/enviroment';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   StyleSheet,
@@ -17,23 +16,10 @@ const Category = ({ navigation }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const getToken = async () => {
-      try {
-        const token = await AsyncStorage.getItem('token');
-        return token;
-      } catch (e) {
-        console.error('Error getting token from AsyncStorage:', e);
-        return null;
-      }
-    };
-
     const loadCategories = async () => {
-      const token = await getToken();
-
       await fetchData({
         url: `${baseUrl}/category`,
         method: 'GET',
-        token,
       });
     };
 

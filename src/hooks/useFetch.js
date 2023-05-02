@@ -1,12 +1,23 @@
 import { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  const fetchData = async ({ url, method, body, token }) => {
+  const fetchData = async ({ url, method, body }) => {
     setLoading(true);
+
+    const getToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem('token');
+        return token;
+      } catch (e) {
+        console.error('Error getting token from AsyncStorage:', e);
+        return null;
+      }
+    };
 
     try {
       const requestOptions = {
@@ -14,13 +25,11 @@ const useFetch = () => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${await getToken()}`,
         },
       };
 
-      /**
-       * O fetch nao aceita body no method GET
-       * */
+      // O fetch nao aceita body no method GET
       if (method !== 'GET') {
         requestOptions.body = body;
       }
