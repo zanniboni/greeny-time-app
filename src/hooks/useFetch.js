@@ -5,20 +5,27 @@ const useFetch = () => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  const fetchData = async ({ url, method, body }) => {
+  const fetchData = async ({ url, method, body, token }) => {
     setLoading(true);
 
     try {
-      const response = await fetch(url, {
+      const requestOptions = {
         method,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODIyODM3MzYsImV4cCI6MTY4MjM3MDEzNiwic3ViIjoiZDY2NGRkODUtMjcxOS00MmI3LWJhMTYtMzczM2EyNTQ4MWNhIn0.bF_HDvlq-YAFfcWAHdAalru5VA0_9wGhBqSHt3eHx24',
+          Authorization: `Bearer ${token}`,
         },
-        body,
-      });
+      };
+
+      /**
+       * O fetch nao aceita body no method GET
+       * */
+      if (method !== 'GET') {
+        requestOptions.body = body;
+      }
+
+      const response = await fetch(url, requestOptions);
 
       const json = await response.json();
 
