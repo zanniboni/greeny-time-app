@@ -1,6 +1,16 @@
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const getToken = async () => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    return token;
+  } catch (e) {
+    console.log('Error getting token from AsyncStorage:', e);
+    return null;
+  }
+};
+
 const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -8,16 +18,6 @@ const useFetch = () => {
 
   const fetchData = async ({ url, method, body }) => {
     setLoading(true);
-
-    const getToken = async () => {
-      try {
-        const token = await AsyncStorage.getItem('token');
-        return token;
-      } catch (e) {
-        console.error('Error getting token from AsyncStorage:', e);
-        return null;
-      }
-    };
 
     try {
       const requestOptions = {
@@ -29,7 +29,6 @@ const useFetch = () => {
         },
       };
 
-      // O fetch nao aceita body no method GET
       if (method !== 'GET') {
         requestOptions.body = body;
       }
