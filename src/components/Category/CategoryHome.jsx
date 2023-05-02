@@ -37,11 +37,13 @@ const Category = ({ navigation }) => {
           <Text style={styles.categoryText}>{item.name}</Text>
         </View>
         <View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Edição de Categorias')}
-          >
-            <Icon name="bars" type="font-awesome" size={20} color="#333" />
-          </TouchableOpacity>
+          {!item.permanent && (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Edição de Categorias')}
+            >
+              <Icon name="bars" type="font-awesome" size={20} color="#333" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     );
