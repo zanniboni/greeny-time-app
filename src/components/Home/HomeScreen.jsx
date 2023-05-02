@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import Header from '../Layout/Header';
 import BtnNavigation from './Navigation/BtnNavigation';
 import GraficoDeBarras from '../Chart/Chart';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const HomeScreen = ({ route, navigation }) => {
-  const { name } = route.params;
+const HomeScreen = ({ navigation }) => {
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    const getName = async () => {
+      try {
+        const savedName = await AsyncStorage.getItem('name');
+        setName(savedName);
+      } catch (e) {
+        console.log('Error getting name from AsyncStorage:', e);
+        setName('Error');
+      }
+    };
+
+    getName();
+  }, []);
 
   return (
     <View style={styles.mainView}>
