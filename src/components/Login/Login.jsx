@@ -12,6 +12,7 @@ import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { baseUrl } from '../../enviroments/enviroment';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
@@ -26,6 +27,16 @@ const Login = ({ navigation }) => {
         password,
       }),
     });
+  };
+
+  const saveToken = async () => {
+    try {
+      await AsyncStorage.setItem('token', data.token);
+      return true;
+    } catch (e) {
+      console.log('Error while saving token in AsyncStorage');
+      return false;
+    }
   };
 
   return (
@@ -67,6 +78,7 @@ const Login = ({ navigation }) => {
             {loading && <Text>Loading...</Text>}
             {error && <Text>Error: {error.message}</Text>}
             {data &&
+              saveToken() &&
               navigation.navigate('Início', {
                 name: data.user.name,
                 email: data.user.email,
