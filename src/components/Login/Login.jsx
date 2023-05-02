@@ -16,8 +16,8 @@ import { baseUrl } from '../../enviroments/enviroment';
 
 const Login = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
-  const [email, setEmail] = useState('teste@teste.com');
-  const [password, setPassword] = useState('1234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const successLogin = token => {
     const saveToken = async () => {
