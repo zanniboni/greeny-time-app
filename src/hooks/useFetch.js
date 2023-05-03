@@ -1,4 +1,15 @@
 import { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const getToken = async () => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    return token;
+  } catch (e) {
+    console.log('Error getting token from AsyncStorage:', e);
+    return null;
+  }
+};
 
 const useFetch = () => {
   const [loading, setLoading] = useState(false);
@@ -9,16 +20,20 @@ const useFetch = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(url, {
+      const requestOptions = {
         method,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODIyODM3MzYsImV4cCI6MTY4MjM3MDEzNiwic3ViIjoiZDY2NGRkODUtMjcxOS00MmI3LWJhMTYtMzczM2EyNTQ4MWNhIn0.bF_HDvlq-YAFfcWAHdAalru5VA0_9wGhBqSHt3eHx24',
+          Authorization: `Bearer ${await getToken()}`,
         },
-        body,
-      });
+      };
+
+      if (method !== 'GET') {
+        requestOptions.body = body;
+      }
+
+      const response = await fetch(url, requestOptions);
 
       const json = await response.json();
 

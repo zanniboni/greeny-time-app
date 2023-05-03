@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from 'react-native-elements';
+import useFetch from '../../hooks/useFetch';
+import { baseUrl } from '../../enviroments/enviroment';
 import {
   View,
   StyleSheet,
@@ -10,35 +12,38 @@ import {
 import Header from '../Layout/Header';
 
 const Category = ({ navigation }) => {
-  const categories = [
-    'Viagem',
-    'Educação',
-    'Transporte',
-    'Streams',
-    'Comida e Bebida',
-    'Tecnologia',
-    'Esportes',
-    'Música',
-    'Entretenimento',
-    'Finanças',
-    'Moda',
-    'Arte',
-    'Cinema',
-    'Negócios',
-  ];
+  const { loading, error, data, fetchData } = useFetch();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      await fetchData({
+        url: `${baseUrl}/category`,
+        method: 'GET',
+      });
+    };
+
+    loadCategories();
+  }, []);
+
+  useEffect(() => {
+    setCategories(data);
+  }, [loading]);
 
   const renderCategory = ({ item }) => {
     return (
       <View style={styles.category}>
         <View>
-          <Text style={styles.categoryText}>{item}</Text>
+          <Text style={styles.categoryText}>{item.name}</Text>
         </View>
         <View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Edição de Categorias')}
-          >
-            <Icon name="bars" type="font-awesome" size={20} color="#333" />
-          </TouchableOpacity>
+          {!item.permanent && (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Edição de Categorias')}
+            >
+              <Icon name="bars" type="font-awesome" size={20} color="#333" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     );
@@ -52,12 +57,16 @@ const Category = ({ navigation }) => {
           <Text style={styles.textAlign}>Categorias</Text>
         </View>
         <View>
-          <FlatList
-            data={categories}
-            renderItem={renderCategory}
-            keyExtractor={item => item}
-            contentContainerStyle={styles.listContainer}
-          />
+          {loading ? (
+            <Text>Carregando</Text>
+          ) : (
+            <FlatList
+              data={categories}
+              renderItem={renderCategory}
+              keyExtractor={item => item.id}
+              contentContainerStyle={styles.listContainer}
+            />
+          )}
         </View>
       </View>
     </>
@@ -66,9 +75,10 @@ const Category = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-between',
+    flex: 1,
   },
   listContainer: {
+    flexGrow: 1,
     paddingTop: 16,
     paddingBottom: 16,
   },
