@@ -1,25 +1,19 @@
 import React from 'react';
-import { TouchableHighlight, StyleSheet, Text } from 'react-native';
+import { TouchableHighlight, Text } from 'react-native';
+import { styled } from 'nativewind';
 
-const BtnNavigation = ({ navigation, route, title, style }) => {
+const ButtonNavigation = ({ navigation, route, title, ...rest }) => {
   return (
     <TouchableHighlight
       underlayColor="transparent"
-      style={styles.box}
+      className=" w-2/5 bg-green-300 rounded-md p-2 mt-1 text-center"
+      {...rest}
       onPress={() => navigation.navigate(route)}
     >
-      <Text style={style}>{title}</Text>
+      <Text className="text-center text-2xl text-white font-bold">{title}</Text>
     </TouchableHighlight>
   );
 };
 
-const styles = StyleSheet.create({
-  box: {
-    borderColor: '#ddd',
-    padding: 10,
-    marginTop: 5,
-    textAlign: 'center',
-  },
-});
-
+const BtnNavigation = styled(ButtonNavigation);
 export default BtnNavigation;
