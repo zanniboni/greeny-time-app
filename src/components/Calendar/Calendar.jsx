@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Modal,
-  View,
-  TextInput,
-} from 'react-native';
+import { Text, TouchableOpacity, Modal, View, TextInput } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -26,11 +19,14 @@ const Calendar = ({ parentCallback }) => {
   let brazilianDate = date.split('/').reverse().join('/');
 
   return (
-    <View style={styles.container}>
-      <View style={styles.dateContainer}>
+    <View className="items-center justify-center">
+      <View className="flex-row gap-5 justify-end w-full mr-12 items-center">
         <TouchableOpacity onPress={handleOnPress}>
-          <Text style={styles.dateLabel}>Data</Text>
-          <TextInput editable={false} style={styles.dateContent}>
+          <Text className="text-center m-5 text-lg font-bold ">Data</Text>
+          <TextInput
+            editable={false}
+            className="w-full bg-gray-600 rounded-md h-10 text-center font-bold text-black"
+          >
             {brazilianDate}
           </TextInput>
         </TouchableOpacity>
@@ -43,8 +39,8 @@ const Calendar = ({ parentCallback }) => {
       </View>
 
       <Modal animationType="slide" transparent={true} visible={open}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
+        <View className="items-center justify-center mt-5">
+          <View className="m-20 bg-white rounded-3xl w-full p-9 items-center shadow-2xl">
             <DatePicker
               mode="calendar"
               selected={date}
@@ -59,63 +55,5 @@ const Calendar = ({ parentCallback }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  centeredView: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    width: '80%',
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  title: {
-    margin: 20,
-    fontSize: 20,
-  },
-  brazilianDate: {
-    fontWeight: 'bold',
-  },
-  dateContainer: {
-    flexDirection: 'row',
-    gap: 10,
-    justifyContent: 'flex-end',
-    width: '100%',
-    marginRight: 50,
-    alignItems: 'center',
-  },
-  dateContent: {
-    width: 100,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
-    height: 40,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    color: 'black',
-  },
-  dateLabel: {
-    textAlign: 'center',
-    margin: 5,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
 
 export default Calendar;

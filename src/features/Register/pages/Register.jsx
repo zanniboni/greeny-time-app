@@ -1,10 +1,11 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../Layout/Header';
 import useFetch from '../../../hooks/useFetch';
@@ -32,107 +33,69 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <>
       <Header title="Greeny Time" />
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.title}>Crie sua conta</Text>
-          <View style={styles.content}>
-            <TextInput
-              style={styles.input}
-              placeholder="Nome"
-              value={name}
-              onChangeText={setName}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="E-mail"
-              value={email}
-              onChangeText={setEmail}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Senha"
-              secureTextEntry
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Confirme sua senha"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-            />
-            <BtnNavigation
-              style={styles.alreadyIn}
-              title={'Já tem uma conta?'}
-              route={'Entrar'}
-              navigation={navigation}
-            />
+      <KeyboardAvoidingView
+        className="mx-5 items-center"
+        behavior="padding"
+        keyboardVerticalOffset={40}
+      >
+        <ScrollView className="w-full">
+          <View className="flex-1 mx-5 items-center overflow-hidden">
+            <View className="text-center w-full">
+              <Text className="text-xl font-bold my-3 text-center">
+                Crie sua conta
+              </Text>
+              <View className="items-center w-full">
+                <TextInput
+                  className="bg-gray-200 text-xl rounded-md h-14 w-full font-bold my-2 px-2"
+                  placeholder="Nome"
+                  value={name}
+                  onChangeText={setName}
+                />
+                <TextInput
+                  className="bg-gray-200 text-xl rounded-md h-14 w-full font-bold my-2 px-2"
+                  placeholder="E-mail"
+                  value={email}
+                  onChangeText={setEmail}
+                />
+                <TextInput
+                  className="bg-gray-200 text-xl rounded-md h-14 w-full font-bold my-2 px-2"
+                  placeholder="Senha"
+                  secureTextEntry
+                />
+                <TextInput
+                  className="bg-gray-200 text-xl rounded-md h-14 w-full font-bold my-2 px-2"
+                  placeholder="Confirme sua senha"
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry
+                />
+                <BtnNavigation
+                  className="text-right"
+                  title={'Já tem uma conta?'}
+                  route={'Entrar'}
+                  navigation={navigation}
+                />
+              </View>
+            </View>
+            <View className="w-full">
+              <TouchableOpacity
+                className="mt-1 py-2 text-center w-full items-center justify-center bg-green-300 h-12 rounded-xl"
+                title="Criar conta"
+                onPress={handlePress}
+              >
+                <Text className="text-white font-bold text-xl w-full text-center">
+                  Criar conta
+                </Text>
+              </TouchableOpacity>
+              {loading && <Text>Loading...</Text>}
+              {error && <Text>Error: {error.message}</Text>}
+              {data && navigation.navigate('Entrar')}
+            </View>
           </View>
-        </View>
-        <View style={styles.btnContainer}>
-          <TouchableOpacity
-            style={styles.box}
-            title="Criar conta"
-            onPress={handlePress}
-          >
-            <Text style={styles.btnStyle}>Criar conta</Text>
-          </TouchableOpacity>
-          {loading && <Text>Loading...</Text>}
-          {error && <Text>Error: {error.message}</Text>}
-          {data && navigation.navigate('Entrar')}
-        </View>
-      </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    overflow: 'hidden',
-  },
-  input: {
-    backgroundColor: '#ddd',
-    fontSize: 20,
-    borderRadius: 10,
-    marginTop: 20,
-    height: 50,
-    paddingHorizontal: 20,
-    maxWidth: '100%',
-  },
-  btnStyle: {
-    color: 'white',
-    backgroundColor: '#00b894',
-    height: 50,
-    borderRadius: 10,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  btnContainer: {
-    width: '100%',
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: '600',
-    marginTop: 20,
-    textAlign: 'center',
-  },
-  pass: {
-    textAlign: 'right',
-    marginTop: 20,
-    fontWeight: '400',
-    fontSize: 15,
-  },
-  content: {
-    textAlign: 'center',
-    width: '100%',
-  },
-  alreadyIn: {
-    textAlign: 'right',
-  },
-});
 
 export default RegisterScreen;

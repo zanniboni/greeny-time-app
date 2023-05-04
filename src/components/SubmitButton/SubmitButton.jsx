@@ -3,30 +3,12 @@ import React from 'react';
 
 const SubmitButton = ({ title = 'Enviar' }) => {
   return (
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.btnText}>{title}</Text>
+    <TouchableOpacity className="bg-green-300 rounded-md p-2 items-center w-full mt-5">
+      <Text className="text-white font-bold text-xl tracking-widest">
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
-  button: {
-    backgroundColor: '#00b894',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    width: '100%',
-    marginTop: 20,
-  },
-  btnText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-    letterSpacing: 1,
-  },
-});
 
 export default SubmitButton;
