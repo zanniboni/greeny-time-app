@@ -1,88 +1,70 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Header from '../Layout/Header';
 import { useState } from 'react';
 import { Icon } from 'react-native-elements';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import useFetch from '../../hooks/useFetch';
+import { baseUrl } from '../../enviroments/enviroment';
 
-const CategoryEdit = () => {
+const CategoryEdit = ({ route, navigation }) => {
   const [name, setName] = useState('');
-  const categories = [
-    'Viagem',
-    'Educação',
-    'Transporte',
-    'Streams',
-    'Comida e Bebida',
-    'Tecnologia',
-    'Esportes',
-    'Música',
-    'Entretenimento',
-    'Finanças',
-    'Moda',
-    'Arte',
-    'Cinema',
-    'Negócios',
-  ];
+  const { fetchData } = useFetch();
+  const { item } = route.params;
+
+  const updateCategoryName = async () => {
+    await fetchData({
+      url: `${baseUrl}/category/${item.id}`,
+      method: 'PUT',
+      body: JSON.stringify({
+        name: name,
+      }),
+    });
+    navigation.goBack();
+  };
+  const deleteCategory = async () => {
+    await fetchData({
+      url: `${baseUrl}/category/${item.id}`,
+      method: 'DELETE',
+    });
+    navigation.goBack();
+  };
 
   return (
     <>
       <Header />
-      <View style={styles.container}>
-        <View style={styles.headerContent}>
-          <View>
-            <Text style={styles.textAlign}>Editar categoria</Text>
+      <View className="justify-between gap-5">
+        <View className="">
+          <View className="my-5 flex-row justify-between">
+            <Text className="text-lg">Editar {item.name}</Text>
+            <TouchableOpacity onPress={deleteCategory}>
+              <Icon name="trash" type="font-awesome" />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity>
-            <Icon name="trash" type="font-awesome" />
-          </TouchableOpacity>
         </View>
         <View>
-          <View style={styles.title}>
+          <View className="flex-row gap-1">
             <Text>
               <Icon name="pencil" type="font-awesome" />
             </Text>
-            <Text>Nome</Text>
+            <Text className="text-2xl">Novo nome</Text>
           </View>
           <TextInput
-            style={styles.textInput}
+            className="border-gray-300 border-b-2 h-12 text-lg my-2"
             onChangeText={text => setName(text)}
             value={name}
           />
         </View>
-        <SubmitButton title={'Salvar'} />
+        <TouchableOpacity
+          onPress={updateCategoryName}
+          className="mt-1 py-2 text-center w-full items-center justify-center bg-green-300 h-12 rounded-xl"
+        >
+          <Text className="text-white font-normal text-xl w-full text-center">
+            Salvar
+          </Text>
+        </TouchableOpacity>
       </View>
     </>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-between',
-    marginHorizontal: 20,
-    gap: 20,
-  },
-  headerContent: {
-    marginVertical: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  textAlign: {
-    textAlign: 'center',
-  },
-  textInput: {
-    borderColor: '#ddd',
-    borderBottomWidth: 1,
-    height: 50,
-  },
-  title: {
-    flexDirection: 'row',
-    gap: 5,
-  },
-});
 export default CategoryEdit;

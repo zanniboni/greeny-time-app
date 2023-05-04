@@ -1,54 +1,42 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import Header from '../Layout/Header';
 import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../enviroments/enviroment';
 
-const CategoryManager = () => {
-  const [description, setDescription] = useState('');
+const CategoryManager = ({ navigation }) => {
   const [name, setName] = useState('');
   const { loading, error, data, fetchData } = useFetch();
 
-  const handlePress = () => {
-    fetchData({
+  const createCategory = async () => {
+    await fetchData({
       url: `${baseUrl}/category`,
       method: 'POST',
       body: JSON.stringify({
         name: name,
-        description: '',
       }),
     });
+    navigation.goBack();
   };
 
   return (
     <>
       <Header />
-      <View style={styles.container}>
-        <View style={styles.content}>
+      <View className="flex-1 justify-between">
+        <View className="items-center">
           <Text>Digite a categoria</Text>
           <TextInput
             placeholder="Vendas"
-            style={styles.textInput}
+            className="mt-2 bg-gray-300 rounded-md p-2 font-bold text-2xl w-full"
             value={name}
             onChangeText={text => setName(text)}
           />
-          <Text>Deixe uma breve descrição sobre a categoria</Text>
-          <TextInput
-            style={styles.description}
-            multiline={true}
-            numberOfLines={4}
-            onChangeText={text => setDescription(text)}
-            value={description}
-          />
-          <TouchableOpacity style={styles.button} onPress={handlePress}>
-            <Text style={styles.btnText}>Enviar</Text>
+          <TouchableOpacity
+            className="bg-green-300 rounded-sm p-2 items-center w-full mt-5"
+            onPress={createCategory}
+          >
+            <Text>Enviar</Text>
             {loading && <Text>Loading...</Text>}
             {error && <Text>Error: {error.message}</Text>}
             {data && []}
@@ -59,47 +47,4 @@ const CategoryManager = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  content: {
-    alignItems: 'center',
-  },
-  formContainer: {
-    width: '80%',
-  },
-  btn: {
-    width: '100%',
-  },
-  textInput: {
-    marginTop: 10,
-    backgroundColor: '#dddddd55',
-    borderRadius: 10,
-    padding: 10,
-    fontWeight: 'bold',
-    fontSize: 20,
-    width: '100%',
-  },
-  description: {
-    marginTop: 10,
-    fontSize: 20,
-    padding: 5,
-    width: '100%',
-    borderColor: 'black',
-    borderWidth: 1,
-    textAlignVertical: 'top',
-    maxHeight: 150,
-  },
-
-  button: {
-    backgroundColor: '#00b894',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    width: '100%',
-    marginTop: 20,
-  },
-});
 export default CategoryManager;
