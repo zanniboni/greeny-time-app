@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
   Text,
   TextInput,
   KeyboardAvoidingView,
@@ -50,37 +49,44 @@ const Login = ({ navigation }) => {
     <>
       <Header title="Greeny Time" />
       <KeyboardAvoidingView
-        style={styles.container}
+        className="mx-5 items-center"
         behavior="padding"
-        keyboardVerticalOffset={50}
+        keyboardVerticalOffset={40}
       >
-        <ScrollView style={{ width: '90%' }}>
+        <ScrollView className="w-11/12">
           <View>
             <View>
-              <Text style={styles.title}>
+              <Text className="text-3xl font-normal tracking-widest mt-5">
                 Bem-vindo(a)! Por favor, faça login para continuar.
               </Text>
             </View>
             <View>
               <TextInput
-                style={styles.input}
+                className="bg-gray-200 text-2xl rounded-md h-14 w-full font-normal my-5 px-2"
                 placeholder="E-mail"
                 value={email}
                 onChangeText={setEmail}
               />
               <TextInput
-                style={styles.input}
+                className="bg-gray-200 text-2xl rounded-md h-14 w-12/12 font-normal px-2"
                 placeholder="Senha"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
               />
-              <Text style={styles.pass}>Esqueceu sua senha?</Text>
+              <Text className="text-right mt-5 mx-5 font-medium text-lg">
+                Esqueceu sua senha?
+              </Text>
             </View>
           </View>
-          <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.box} onPress={handlePress}>
-              <Text style={styles.btnStyle}>Login</Text>
+          <View className="w-full">
+            <TouchableOpacity
+              className="mt-1 py-2 text-center w-full items-center justify-center bg-green-300 h-12 rounded-xl"
+              onPress={handlePress}
+            >
+              <Text className="text-white font-normal text-xl w-full text-center">
+                Login
+              </Text>
             </TouchableOpacity>
             {loading && <Text>Loading...</Text>}
             {error && <Text>Error: {error.message}</Text>}
@@ -91,51 +97,5 @@ const Login = ({ navigation }) => {
     </>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 20,
-    alignItems: 'center',
-  },
-  input: {
-    backgroundColor: '#ddd',
-    fontSize: 20,
-    borderRadius: 10,
-    marginTop: 20,
-    height: 50,
-    paddingHorizontal: 20,
-    maxWidth: '95%',
-  },
-  btnStyle: {
-    color: 'white',
-    backgroundColor: '#00b894',
-    height: 50,
-    borderRadius: 10,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  btnContainer: {
-    width: '100%',
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: '600',
-    marginTop: 20,
-  },
-  pass: {
-    textAlign: 'right',
-    marginTop: 20,
-    marginHorizontal: 20,
-    fontWeight: '400',
-    fontSize: 15,
-  },
-  box: {
-    marginTop: 5,
-    paddingVertical: 10,
-    textAlign: 'center',
-    width: '100%',
-  },
-});
 
 export default Login;

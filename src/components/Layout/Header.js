@@ -1,32 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const Header = ({ title }) => {
   return (
-    <View style={styles.header}>
+    <View className="w-full h-20 flexc-row items-center justify-center bg-green-300">
       <MaterialIcons name="access-time" size={24} color="#fff" />
-      <Text style={styles.headerText}>{title}</Text>
+      <Text className="font-bold text-2xl text-white tracking-widest">
+        {title}
+      </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  header: {
-    width: '100%',
-    height: 80,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#00b894',
-  },
-  headerText: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#fff',
-    letterSpacing: 1,
-    marginLeft: 10,
-  },
-});
 
 export default Header;

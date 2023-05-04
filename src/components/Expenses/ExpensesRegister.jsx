@@ -1,31 +1,33 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Text } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import Header from '../Layout/Header';
 import Formulary from '../Form/Formulary';
 import Calendar from '../Calendar/Calendar';
 import ComboBox from '../Combobox/Combobox';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
-const ExpensesScreen = () => {
+const IncomesScreen = () => {
   return (
     <>
       <Header />
-      <View style={styles.container}>
-        <Text style={styles.inputLabel}>Adicione o gasto</Text>
-        <TextInput placeholder="Snickers na padaria" style={styles.textInput} />
-        <View style={styles.headingContainer}>
-          <Text style={styles.headingText}>Categoria</Text>
-          <Text style={styles.headingText}>Valor</Text>
+      <View className="justify-between">
+        <Text className="text-2xl text-center my-2 font-semibold">
+          Adicione o gasto
+        </Text>
+        <TextInput
+          placeholder="Snickers na padaria"
+          className="my-2 bg-gray-200 rounded-md p-2 font-bold text-xl"
+        />
+        <View className="justify-between flex-row mx-5 mt-5">
+          <Text className="text-xl font-semibold">Categoria</Text>
+          <Text className="text-xl font-semibold">Valor</Text>
         </View>
-        <View style={styles.content}>
+        <View className="justify-between flex-row mx-2 mt-5">
           <ComboBox />
-          <Formulary
-            style={styles.formContainer}
-            placeholder={'R$ 10.000,00'}
-          />
+          <Formulary className="w-2/5" placeholder={'R$ 10.000,00'} />
         </View>
         <Calendar />
-        <View style={styles.btn}>
+        <View className="w-full">
           <SubmitButton />
         </View>
       </View>
@@ -33,53 +35,4 @@ const ExpensesScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-between',
-  },
-  formContainer: {
-    width: '40%',
-  },
-  content: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    marginHorizontal: 10,
-    marginTop: 20,
-  },
-  inputTxt: {
-    backgroundColor: '#dddddd99',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    width: '40%',
-  },
-  headingContainer: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    marginHorizontal: 20,
-    marginTop: 20,
-  },
-  headingText: {
-    fontSize: 30,
-    fontWeight: '600',
-  },
-  textInput: {
-    marginTop: 10,
-    backgroundColor: '#dddddd55',
-    borderRadius: 10,
-    padding: 10,
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  inputLabel: {
-    fontSize: 25,
-    textAlign: 'center',
-    marginTop: 10,
-    marginBottom: 10,
-    fontWeight: '600',
-  },
-  btn: {
-    width: '100%',
-  },
-});
-
-export default ExpensesScreen;
+export default IncomesScreen;
