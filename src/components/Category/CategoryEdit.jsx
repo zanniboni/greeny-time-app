@@ -5,11 +5,13 @@ import { useState } from 'react';
 import { Icon } from 'react-native-elements';
 import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../enviroments/enviroment';
+import { useCategory } from '../../context/categoryContext';
 
 const CategoryEdit = ({ route, navigation }) => {
   const [name, setName] = useState('');
   const { fetchData } = useFetch();
   const { item } = route.params;
+  const { setReload } = useCategory();
 
   const updateCategoryName = async () => {
     await fetchData({
@@ -19,6 +21,8 @@ const CategoryEdit = ({ route, navigation }) => {
         name: name,
       }),
     });
+
+    setReload(true);
     navigation.goBack();
   };
   const deleteCategory = async () => {
@@ -26,6 +30,8 @@ const CategoryEdit = ({ route, navigation }) => {
       url: `${baseUrl}/category/${item.id}`,
       method: 'DELETE',
     });
+
+    setReload(true);
     navigation.goBack();
   };
 

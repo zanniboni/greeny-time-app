@@ -12,65 +12,68 @@ import CategoryHome from './src/components/Category/CategoryHome';
 import IncomesScreen from './src/components/Incomes/Incomes';
 import CategoryEdit from './src/components/Category/CategoryEdit';
 import CategoryManager from './src/components/Category/CategoryManager';
+import { AppProvider } from './src/context';
 
 const Stack = createNativeStackNavigator();
 const titleAlign = { headerTitleAlign: 'center' };
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={WelcomeScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen name="Entrar" component={Login} options={titleAlign} />
-        <Stack.Screen
-          name="Registrar"
-          component={RegisterScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Início"
-          component={HomeScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Registro de salário"
-          component={RegisterSalaryScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Registro de horas trabalhadas"
-          component={WorkHoursScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Registro de gastos"
-          component={ExpensesScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Registro de receitas"
-          component={IncomesScreen}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Categoria"
-          component={CategoryHome}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Gerenciamento de Categorias"
-          component={CategoryManager}
-          options={titleAlign}
-        />
-        <Stack.Screen
-          name="Edição de Categorias"
-          component={CategoryEdit}
-          options={titleAlign}
-        />
-      </Stack.Navigator>
+      <AppProvider>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={WelcomeScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen name="Entrar" component={Login} options={titleAlign} />
+          <Stack.Screen
+            name="Registrar"
+            component={RegisterScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Início"
+            component={HomeScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Registro de salário"
+            component={RegisterSalaryScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Registro de horas trabalhadas"
+            component={WorkHoursScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Registro de gastos"
+            component={ExpensesScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Registro de receitas"
+            component={IncomesScreen}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Categoria"
+            component={CategoryHome}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Gerenciamento de Categorias"
+            component={CategoryManager}
+            options={titleAlign}
+          />
+          <Stack.Screen
+            name="Edição de Categorias"
+            component={CategoryEdit}
+            options={titleAlign}
+          />
+        </Stack.Navigator>
+      </AppProvider>
     </NavigationContainer>
   );
 };

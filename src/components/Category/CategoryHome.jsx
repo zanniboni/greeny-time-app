@@ -5,25 +5,34 @@ import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../enviroments/enviroment';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Header from '../Layout/Header';
+import { useCategory } from '../../context/categoryContext';
 
 const Category = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();
+  const { reloadListValue, setReload } = useCategory();
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    const loadCategories = async () => {
-      await fetchData({
-        url: `${baseUrl}/category`,
-        method: 'GET',
-      });
-    };
+  const loadCategories = async () => {
+    await fetchData({
+      url: `${baseUrl}/category`,
+      method: 'GET',
+    });
+  };
 
+  useEffect(() => {
     loadCategories();
+    setReload(false);
   }, []);
+
+  console.log(reloadListValue);
 
   useEffect(() => {
     setCategories(data);
   }, [loading]);
+
+  useEffect(() => {
+    reloadListValue && loadCategories() && setReload(false);
+  }, [reloadListValue]);
 
   const renderCategory = ({ item }) => {
     return (
