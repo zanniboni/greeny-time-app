@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 import Header from '../Layout/Header';
 import Calendar from '../Calendar/Calendar';
-import useFetch from '../../hooks/useFetch';
-import { baseUrl } from '../../enviroments/enviroment';
+import useFetch from '../../../hooks/useFetch';
+import { baseUrl } from '../../../enviroments/enviroment';
 import { useState } from 'react';
 
-const RegisterSalaryScreen = () => {
+const HomePageSalary = () => {
   const { loading, error, data, fetchData } = useFetch();
   const [salary, setSalary] = useState('');
   const [paymentDate, setPaymentDate] = useState('');
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterSalaryScreen;
+export default HomePageSalary;

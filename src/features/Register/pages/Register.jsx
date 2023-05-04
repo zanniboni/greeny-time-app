@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Header from '../Layout/Header';
-import useFetch from '../../hooks/useFetch';
+import useFetch from '../../../hooks/useFetch';
 import { useState } from 'react';
-import { baseUrl } from '../../enviroments/enviroment';
-import BtnNavigation from '../Home/Navigation/BtnNavigation';
+import { baseUrl } from '../../../enviroments/enviroment';
+import BtnNavigation from '../../Home/Navigation/BtnNavigation';
 
 const RegisterScreen = ({ navigation }) => {
   const { loading, error, data, fetchData } = useFetch();

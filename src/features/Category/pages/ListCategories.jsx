@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 import Header from '../Layout/Header';
-import useFetch from '../../hooks/useFetch';
-import { baseUrl } from '../../enviroments/enviroment';
+import useFetch from '../../../hooks/useFetch';
+import { baseUrl } from '../../../enviroments/enviroment';
 
 const CategoryManager = () => {
   const [description, setDescription] = useState('');
