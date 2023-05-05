@@ -24,8 +24,6 @@ const Category = ({ navigation }) => {
     setReload(false);
   }, []);
 
-  console.log(reloadListValue);
-
   useEffect(() => {
     setCategories(data);
   }, [loading]);

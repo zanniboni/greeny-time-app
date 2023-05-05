@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 const ComboBox = () => {
@@ -8,7 +8,7 @@ const ComboBox = () => {
   return (
     <View>
       <Picker
-        style={styles.boxPicker}
+        className="w-40"
         selectedValue={selectedItem}
         onValueChange={(itemValue, itemIndex) => setSelectedItem(itemValue)}
       >
@@ -18,11 +18,5 @@ const ComboBox = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  boxPicker: {
-    width: 150,
-  },
-});
 
 export default ComboBox;
